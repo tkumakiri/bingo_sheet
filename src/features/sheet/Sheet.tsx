@@ -17,7 +17,7 @@ function checkOMTG(markedMass: MassState[]) {
   checkCross[0] = markedMass.filter((data) => data.col === data.row).length
   checkCross[1] = markedMass.filter((data) => data.col === 4 - data.row).length
   if (checkCol.includes(4) || checkRow.includes(4) || checkCross.includes(4)) {
-    return 'OMTG'
+    return 'リーチ'
   }
   return ''
 }
@@ -33,13 +33,13 @@ function checkBingo(markedMass: MassState[]) {
   checkCross[0] = markedMass.filter((data) => data.col === data.row).length
   checkCross[1] = markedMass.filter((data) => data.col === 4 - data.row).length
   if (checkCol.includes(5) || checkRow.includes(5) || checkCross.includes(5)) {
-    return 'Bingo'
+    return 'Bingo!'
   }
   return ''
 }
 
 export default function Sheet() {
-  const name = ['b', 'i', 'n', 'g', 'o']
+  const name = ['B', 'I', 'N', 'G', 'O']
   const markedMass = useAppSelector(selectMass).filter((data) => data.isMark === true)
   const dispatch = useAppDispatch()
 
@@ -48,15 +48,15 @@ export default function Sheet() {
       <div className="flex rounded shadow-xl">
         {name.map((mode, index) => (
           <div className="flex-1 text-center" key={mode}>
-            <div className="text-2xl">
+            <div className="text-2xl font-bold">
               <div className=" bg-green-500">{mode}</div>
             </div>
             <Col mode={index} />
           </div>
         ))}
       </div>
-      <div className="text-lime-600 text-3xl mt-6 mb-3">{checkOMTG(markedMass)}</div>
-      <div className="text-red-600 text-3xl">{checkBingo(markedMass)}</div>
+      <div className="text-lime-600 text-3xl mt-6 mb-3 font-bold">{checkOMTG(markedMass)}</div>
+      <div className="text-red-600 text-3xl font-bold">{checkBingo(markedMass)}</div>
 
       <button
         className="bg-yellow-400 px-3 py-2 mt-10"

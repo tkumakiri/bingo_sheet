@@ -19,7 +19,7 @@ export default function Mass(props: Props) {
     (mass) => mass.col === markMass.col && mass.row === markMass.row
   )[0].isMark
   const colorState: string = marked ? 'bg-red-400' : 'bg-blue-400'
-  const State = `${colorState} w-auto text-center py-8 border-2`
+  const State = `${colorState} w-auto text-center py-5 px-5 border-2`
   return (
     <div className={State}>
       <button
